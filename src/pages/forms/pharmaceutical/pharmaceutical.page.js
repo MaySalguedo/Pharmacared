@@ -11,15 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function showForm(id){
 
-	fetch("/Pharmacared/src/components/user/user_form/user_form.component.php" + (id!=null ? "?id="+id : "")).then(
+    fetch("/Pharmacared/src/components/pharmaceutical/pharmaceutical_form/pharmaceutical_form.component.php" + (id!=null ? "?id="+id : "")).then(response => {
 
-		response => response.text()
+		//console.log(response.text());
+
+		return response.text();
 	
-	).then(data => {
+	}).then(data => {
 
 		//console.log(data);
 
-		document.getElementById('UserModal').innerHTML = data;
+        document.getElementById('PharmaModal').innerHTML = data;
 		
 		let script = document.getElementById('controller');
 		
@@ -37,11 +39,11 @@ function showForm(id){
 
 		document.body.appendChild(script);
 
-		const modal = new bootstrap.Modal('#UserModal');
+		const modal = new bootstrap.Modal('#PharmaModal');
 		document.getElementById('form').reset();
 		modal.show();
 
-	}).catch(e => 
+    }).catch(e => 
 	
 		console.error('Error loading the item: ', e)
 		

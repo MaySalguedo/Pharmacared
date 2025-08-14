@@ -44,26 +44,26 @@ async function warning(b){
 
 	const shot = await Swal.fire({
 
-        title: 'Are you sure you want to proceed?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'toggle state',
-        cancelButtonText: 'Cancel',
-        reverseButtons: true
+		title: 'Are you sure you want to proceed?',
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonText: 'toggle state',
+		cancelButtonText: 'Cancel',
+		reverseButtons: true
 
-    });
+	});
 
-    if (shot.isConfirmed){
+	if (shot.isConfirmed){
 	
 		return true;
 
-    }else{
+	}else{
 
-        Swal.fire('Cancelled', 'Action has been cancelled', 'info');
+		Swal.fire('Cancelled', 'Action has been cancelled', 'info');
 	
 		return false;
 
-    }
+	}
 
 }
 
@@ -73,7 +73,7 @@ async function toggle(id, state){
 
 	if (b){
 
-		fetch("http://localhost/Pharmacared/src/pages/forms/user/controllers/user.controller.php",{
+		fetch("http://localhost/Pharmacared/src/pages/forms/pharmaceutical/controllers/pharmaceutical.controller.php",{
 
 			method: 'DELETE',
 			headers: {
@@ -97,24 +97,24 @@ async function toggle(id, state){
 
 			if (data.status=='success'){
 
-				Swal.fire(data.state==1 ? 'Activated' : 'Deactivated', 'User has been successfully '+(data.type)+'.', 'success');
+				Swal.fire(data.state==1 ? 'Activated' : 'Deactivated', 'Pharmaceutical has been successfully '+(data.type)+'.', 'success');
 
 				const Checkbox = document.getElementById(id);
 				Checkbox.checked = data.state;
 
-				const card = document.getElementById(`user-card-${id}`);
+				const card = document.getElementById(`pharma-card-${id}`);
 
 				if (card) {
 
 					if (data.state) {
 
-						card.classList.remove('user-card-deactivated');
-						card.classList.add('user-card-activated');
+						card.classList.remove('pharma-card-deactivated');
+						card.classList.add('pharma-card-activated');
 
 					}else{
 
-						card.classList.remove('user-card-activated');
-						card.classList.add('user-card-deactivated');
+						card.classList.remove('pharma-card-activated');
+						card.classList.add('pharma-card-deactivated');
 
 					}
 

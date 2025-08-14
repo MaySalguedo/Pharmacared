@@ -64,7 +64,7 @@ class UserController{
 
 			if (empty($password)){
 
-				throw new Exception('DNI cannot be empty.');
+				$password = null;
 
 			}
 
@@ -88,6 +88,7 @@ class UserController{
 			if (!$isPatch){
 
 				$this->user = new Account(null);
+				$this->user->picture = 'https://avatars.githubusercontent.com/u/'.rand(1, 131812793).'?v=4';
 
 			}else{
 
@@ -100,7 +101,6 @@ class UserController{
 			$this->user->email = $email;
 			$this->user->password = $password;
 			$this->user->admin = $admin;
-			$this->user->picture = 'https://avatars.githubusercontent.com/u/'.rand([1, 131812793]).'?v=4';
 
 		}catch(Exception $e){
 
@@ -133,7 +133,7 @@ class UserController{
 
 }
 
-try{
+try {
 
 	$type = '';
 	$state = true;
@@ -149,19 +149,13 @@ try{
 
 		}
 
-		$user = User::find_by_dni($data['id']);
+		$service = new UserService();
 
-		if (!isset($user)){
+		$state = $service->findOne($data['id'])->state==1 ? 0 : 1;
 
-			throw new Exception('User with id '. $dni .' not found');
+		$service->toggle($data['id'], $state);
 
-		}
-
-		$state = $user->state = !$user->state;
-
-		$user->save();
-
-		$type = 'update';
+		$type = $state==1 ? 'activate' : 'deactivate';
 
 	} else if ($_SERVER['REQUEST_METHOD']==='POST' && $_SESSION['REAL_METHOD']==='POST') {
 
@@ -173,7 +167,7 @@ try{
 
 		}
 
-		$type = 'insert';
+		$type = 'inserte';
 
 	}else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['REAL_METHOD']==='PATCH'){
 
@@ -197,7 +191,7 @@ try{
 		'status' => 'success',
 		'state' => $state,
 		'message' => 'User succesfully '. $type .'d',
-		'url' => '/PurchaseSystem/src/pages/Forms/User/User.page.php'
+		'url' => '/Pharmacared/src/pages/forms/user/user.page.php'
 
 	]);
 

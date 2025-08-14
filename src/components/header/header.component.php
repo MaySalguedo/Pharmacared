@@ -91,7 +91,7 @@ function HeaderComponent(?User $user): string{
 
 					<?php endif; ?>
 
-					<h6 class="sidebar-heading px-3 mt-4 mb-1 text-muted">
+					<!--<h6 class="sidebar-heading px-3 mt-4 mb-1 text-muted">
 
 						<i class="fas fa-cash-register me-2"></i>Purchases
 
@@ -101,9 +101,29 @@ function HeaderComponent(?User $user): string{
 
 						<li class="nav-item">
 
-							<a class="nav-link" href="/Pharmacared/src/pages/Forms/Purchase/purchase.page.php">
+							<a class="nav-link" href="/Pharmacared/src/pages/forms/purchase/purchase.page.php">
 
-								<i class="fas fa-cart-plus me-2"></i>New Purchase
+								<i class="fas fa-cart-plus me-2"></i>Purchase
+
+							</a>
+
+						</li>
+
+					</ul>-->
+
+					<h6 class="sidebar-heading px-3 mt-4 mb-1 text-muted">
+
+						<i class="fas fa-pills me-2"></i>Pharmaceuticals
+
+					</h6>
+		
+					<ul class="nav flex-column">
+
+						<li class="nav-item">
+
+							<a class="nav-link" href="/Pharmacared/src/pages/forms/pharmaceutical/pharmaceutical.page.php">
+
+								<i class="fas fa-prescription-bottle-alt me-2"></i>Pharmaceutical
 
 							</a>
 

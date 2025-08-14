@@ -1,21 +1,36 @@
-/* Estilos para la tarjeta de usuario */
-.user-card {
-    background-color: WHITE;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 16px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    animation: cardEntrance 0.4s ease forwards;
-    position: relative;
-    /* Borde con degradado */
+
+.user-card-activated {
+	border-left: 4px solid #4CAF50;
+	opacity: 1;
 }
 
-.user-card:hover {
-	background-color: #F0EFEA;
+.user-card-deactivated {
+	border-left: 4px solid #6c757d;
+	opacity: 0.6;
+	background-color: #f8f9fa;
+}
+
+.user-card-deactivated .user-name {
+	text-decoration: line-through;
+	color: #6c757d;
+}
+
+.user-card-deactivated .user-card-activated {
+
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	margin-bottom: 16px;
+	overflow: hidden;
+	transition: all 0.3s ease;
+	animation: cardEntrance 0.4s ease forwards;
+	position: relative;
+}
+
+.user-card-activated:hover {
+    background-color: #F0F7FF;
     transform: translateY(-4px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    /* Intensificar el borde en hover */
+    border-left-color: #2196F3;
 }
 
 .card-header {
@@ -128,7 +143,6 @@ input[type="checkbox"] {
     color: #6c757d;
 }
 
-/* Botones de acción */
 .btn-edit, .btn-delete {
     width: 36px;
     height: 36px;
@@ -170,7 +184,6 @@ input[type="checkbox"] {
     transition: transform 0.2s ease;
 }
 
-/* Animación */
 @keyframes cardEntrance {
     from {
         opacity: 0;
@@ -182,7 +195,6 @@ input[type="checkbox"] {
     }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .user-card {
         margin-bottom: 12px;

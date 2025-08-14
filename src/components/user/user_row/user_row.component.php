@@ -16,7 +16,7 @@ function UserRow(User $user): string {
 
 ?>
 
-	<div class="user-card">
+	<div id="user-card-<?= $user->id ?>" class="user-card-<?= $user->state==1 ? 'activated' : 'deactivated' ?>">
 
 		<div class="card-header">
 
@@ -68,11 +68,11 @@ function UserRow(User $user): string {
 
 					<div class="attribute">
 
-						<span>Activo:</span>
+						<span>State:</span>
 
 						<div class="checkbox-container">
 
-							<input type="checkbox" disabled <?= $user->state ? 'checked' : '' ?>>
+							<input id="<?= $user->id ?>" type="checkbox" disabled <?= $user->state ? 'checked' : '' ?>>
 
 						</div>
 

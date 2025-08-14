@@ -16,12 +16,12 @@ if (document.getElementById('form')!=null){
 
 		}).then(response =>{
 
-			console.log(response.text());
+			//console.log(response.text());
 			return response.json();
 
 		}).then(data => {
 
-			formWarning(data);
+			swal(data);
 
 			if (data.status === 'error') {
 
@@ -44,7 +44,7 @@ if (document.getElementById('form')!=null){
 
 }
 
-async function formWarning(data){
+async function swal(data){
 
 	let b = data.status==='error';
 	let c = data.type==='insert';
@@ -65,40 +65,40 @@ async function formWarning(data){
 
 	if (shot.isConfirmed){
 
-        window.location.href = data.url;
+		window.location.href = data.url;
 
-    }
+	}
 
 }
 
 function restore(formData){
 
-    formData.forEach((value, key) =>{
+	formData.forEach((value, key) =>{
 		
-        const input = document.querySelector(`[name=${key}]`);
+		const input = document.querySelector(`[name=${key}]`);
 
-        if (input){
+		if (input){
 
-            input.value = value;
+			input.value = value;
 
-        }
+		}
 
-    });
+	});
 
 }
 
 function clear(formData){
 
-    formData.forEach((value, key) =>{
+	formData.forEach((value, key) =>{
 		
-        const input = document.querySelector(`[name=${key}]`);
+		const input = document.querySelector(`[name=${key}]`);
 
-        if (input){
+		if (input){
 		
-            input.value = '';
+			input.value = '';
 
-        }
+		}
 
-    });
+	});
 
 }

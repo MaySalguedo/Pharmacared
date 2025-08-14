@@ -1,14 +1,14 @@
 <?php
 
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Pharmacared/src/core/services/pharmacared/user/entities/user.entity.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Pharmacared/src/core/services/pharmacared/user/entities/account.entity.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Pharmacared/src/core/services/pharmacared/user/user.service.php';
 
 $id = isset($_GET['id']) ? $_GET['id'] : null;
 
 if ($id!=null){
 
-	echo UserInsertForm(new UserService()->findOne($id));
+	echo UserInsertForm(new UserService()->findOneAccount($id));
 	$_SESSION['updated_user'] = $id;
 	$_SESSION['REAL_METHOD'] = 'PATCH';
 
@@ -19,7 +19,7 @@ if ($id!=null){
 
 }
 
-function UserInsertForm(?User $user): string {
+function UserInsertForm(?Account $user): string {
 
 	$user_url = '/Pharmacared/src/pages/forms/user/';
 	$user_form_url = '/Pharmacared/src/components/user/user_form/';

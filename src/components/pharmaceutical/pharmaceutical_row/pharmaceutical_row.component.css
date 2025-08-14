@@ -1,0 +1,154 @@
+
+.pharma-card-activated {
+	border-left: 4px solid #4CAF50;
+	opacity: 1;
+}
+
+.pharma-card-deactivated {
+	border-left: 4px solid #6c757d;
+	opacity: 0.6;
+	background-color: #f8f9fa;
+}
+
+/* Opcional: estilo para texto tachado */
+.pharma-card-deactivated .pharma-name {
+	text-decoration: line-through;
+	color: #6c757d;
+}
+
+.pharma-card-deactivated .pharma-card-activated {
+
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	margin-bottom: 16px;
+	overflow: hidden;
+	transition: all 0.3s ease;
+	animation: cardEntrance 0.4s ease forwards;
+	position: relative;
+}
+
+.pharma-card-activated:hover {
+	background-color: #F0F7FF;
+	transform: translateY(-4px);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+	border-left-color: #2196F3;
+}
+
+.card-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+	background-color: #f8f9fa;
+	border-bottom: 1px solid #e9ecef;
+}
+
+.pharma-id {
+	font-size: 0.85rem;
+	color: #6c757d;
+	font-weight: bold;
+}
+
+.actions-menu { position: relative; }
+.menu-toggle { background: none; border: none; cursor: pointer; font-size: 1.2rem; padding: 0.25rem 0.5rem; color: #495057; }
+.menu-content { display: none; position: absolute; right: 0; background-color: white; min-width: 80px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); border-radius: 4px; z-index: 1; flex-direction: column; padding: 0.5rem; }
+.actions-menu:hover .menu-content { display: flex; }
+.menu-content button { margin: 0.25rem 0; }
+
+.card-body { padding: 1rem; }
+
+.pharma-name {
+	font-size: 1.3rem;
+	font-weight: 600;
+	color: #1976D2;
+	margin-bottom: 0.5rem;
+}
+
+.pharma-description {
+	font-size: 0.95rem;
+	color: #455A64;
+	margin-bottom: 1rem;
+	line-height: 1.4;
+}
+
+.pharma-attributes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	align-items: center;
+}
+
+.attribute {
+	display: flex;
+	align-items: center;
+	font-size: 0.9rem;
+	color: #495057;
+	background: #F5F9FF;
+	padding: 0.4rem 0.8rem;
+	border-radius: 20px;
+}
+
+.attribute span:first-child {
+	font-weight: 600;
+	margin-right: 0.3rem;
+	color: #37474F;
+}
+
+.expiration-warning {
+	color: #F44336;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+}
+
+.expiration-warning i {
+	margin-right: 0.5rem;
+}
+
+.checkbox-container { position: relative; width: 20px; height: 20px; }
+input[type="checkbox"] { width: 100%; height: 100%; }
+
+.card-footer {
+	display: flex;
+	justify-content: space-between;
+	padding: 0.75rem 1rem;
+	background-color: #f8f9fa;
+	border-top: 1px solid #e9ecef;
+	font-size: 0.8rem;
+	color: #6c757d;
+}
+
+.btn-edit, .btn-delete {
+	width: 36px;
+	height: 36px;
+	padding: 0;
+	border-radius: 50%;
+	transition: all 0.2s ease;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid transparent;
+}
+
+.btn-edit { background-color: #ffc10715; border-color: #ffc10730; color: #ffc107; }
+.btn-delete { background-color: #dc354515; border-color: #dc354530; color: #dc3545; }
+
+.btn-edit:hover { background-color: #ffc107; color: white; transform: scale(1.1); }
+.btn-delete:hover { background-color: #dc3545; color: white; transform: scale(1.1); }
+
+.btn-edit i, .btn-delete i { font-size: 1.1rem; transition: transform 0.2s ease; }
+
+@keyframes cardEntrance {
+	from { opacity: 0; transform: translateY(10px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+	.pharma-card { margin-bottom: 12px; }
+	.card-header, .card-body, .card-footer { padding: 0.75rem; }
+	.pharma-name { font-size: 1.1rem; }
+	.pharma-description { font-size: 0.85rem; }
+	.attribute { font-size: 0.8rem; padding: 0.3rem 0.6rem; }
+	.btn-edit, .btn-delete { width: 32px; height: 32px; }
+	.card-footer { flex-direction: column; gap: 0.25rem; }
+}

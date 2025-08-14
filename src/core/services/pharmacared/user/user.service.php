@@ -40,7 +40,7 @@ class UserService {
 
 	public function findAll(): array {
 
-		$stmt = $this->pdo->prepare("SELECT * FROM auth.[user] ORDER BY updatedat ASC;");
+		$stmt = $this->pdo->prepare("SELECT * FROM auth.[user] ORDER BY updatedat DESC;");
 		$stmt->execute([]);
 		$user = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -115,6 +115,17 @@ class UserService {
 
 	}
 
+	public function toggle(string $id, int $state): void {
+
+		$stmt = $this->pdo->prepare("UPDATE auth.[user] SET state = ? WHERE id = ?");
+		$stmt->execute([
+
+			$state, $id
+
+		]);
+
+	}
+
 	public function authenticate(string $email, string $password): ?User {
 
 		$stmt = $this->pdo->prepare("SELECT * FROM auth.authenticate(?, ?)");
@@ -148,7 +159,7 @@ class UserService {
 		$account = new Account($this->cast_user($resulSet));
 
 		$account->email = $resulSet['email'];
-		$account->password = $resulSet['password'];
+		$account->password = null;
 
 		return $account;
 

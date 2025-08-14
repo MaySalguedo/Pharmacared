@@ -10,12 +10,14 @@
 		<?php
 
 			require_once $_SERVER['DOCUMENT_ROOT'] . '/Pharmacared/src/components/header/header.component.php';
-			require_once $_SERVER['DOCUMENT_ROOT'] . '/Pharmacared/src/components/user/user_row/user_row.component.php';
+			require_once $_SERVER['DOCUMENT_ROOT'] . '/Pharmacared/src/components/pharmaceutical/pharmaceutical_row/pharmaceutical_row.component.php';
 			require_once $_SERVER['DOCUMENT_ROOT'] . '/Pharmacared/src/core/services/pharmacared/user/user.service.php';
+			require_once $_SERVER['DOCUMENT_ROOT'] . '/Pharmacared/src/core/services/pharmacared/pharmaceutical/pharmaceutical.service.php';
 
-			$user_url = '/Pharmacared/src/pages/forms/user/';
+			$pharmaceutical_url = '/Pharmacared/src/pages/forms/pharmaceutical/';
 
 			$userService = new UserService();
+			$pharmaceuticalService = new PharmaceuticalService();
 
 		?>
 
@@ -24,7 +26,7 @@
 		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.7/dist/sweetalert2.min.css" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.7/dist/sweetalert2.min.js"></script>
 
-		<link rel="stylesheet" href="<?=$user_url?>user.page.css">
+		<link rel="stylesheet" href="<?=$pharmaceutical_url?>pharmaceutical.page.css">
 
 	</head>
 
@@ -36,7 +38,7 @@
 
 			<div class="d-flex justify-content-between align-items-center mb-4">
 
-				<h2>User Management</h2>
+				<h2>Pharmaceutical Management</h2>
 
 				<button class="btn btn-success" id="btnAdd">
 
@@ -50,31 +52,17 @@
 
 				<table class="table table-striped table-hover" id="UsersTable">
 
-					<!--<thead class="table-dark">
-
-						<tr>
-
-							<th>ID</th>
-							<th>Name</th>
-							<th>Admin</th>
-							<th>State</th>
-							<th>Actions</th>
-
-						</tr>
-
-					</thead>-->
-
 					<tbody>
 
 						<?php
 
-							$users = $userService->findAll();
+							$pharmas = $pharmaceuticalService->findAll();
 
 						?>
 
-						<?php foreach($users as $user): ?>
+						<?php foreach($pharmas as $pharma): ?>
 
-							<?=UserRow($user)?>
+							<?=PharmaceuticalRow($pharma)?>
 
 						<?php endforeach; ?>
 
@@ -86,9 +74,9 @@
 
 		</div>
 
-		<div class="modal fade" id="UserModal" tabindex="-1"></div>
+		<div class="modal fade" id="PharmaModal" tabindex="-1"></div>
 
-		<script src="<?=$user_url?>user.page.js"></script>
+		<script src="<?=$pharmaceutical_url?>pharmaceutical.page.js"></script>
 
 	</body>
 
