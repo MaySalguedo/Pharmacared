@@ -1,0 +1,21 @@
+.login-card {
+
+	max-width: 400px;
+	border-radius: 15px;
+	border: none;
+
+}
+
+.login-logo {
+
+	width: 120px;
+	height: auto;
+
+}
+
+body {
+
+	background: linear-gradient(120deg, #7f7fd5, #86a8e7, #91eae4);
+	min-height: 100vh;
+
+}
